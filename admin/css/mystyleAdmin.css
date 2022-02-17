@@ -1,0 +1,32 @@
+
+body{
+	font-family: 'Space Grotesk', sans-serif !important;
+	background-color: #f5f5f5 !important;
+	color: linear-gradient(to right, #ee0979, #ff6a00) !important;
+}
+
+.fire{
+	background: linear-gradient(to right, #f12711, #f5af19) !important;
+	color: white;
+	border: none !important;
+}
+
+.fire:hover{
+	color: white !important;
+}
+
+a{
+	color: black !important;
+	font-size: medium;
+}
+.ch_relative{
+	position: relative;
+	height: 20vh !important;
+}
+.ch_absolute{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	font-weight: 700;
+}

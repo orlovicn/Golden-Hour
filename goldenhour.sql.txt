@@ -1,0 +1,173 @@
+-- phpMyAdmin SQL Dump
+-- version 5.0.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 10, 2021 at 04:27 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.14
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `goldenhour`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `korisnik`
+--
+
+CREATE TABLE `korisnik` (
+  `id` int(11) NOT NULL,
+  `role` varchar(30) NOT NULL,
+  `ime` varchar(30) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `sifra` varchar(30) NOT NULL,
+  `error_count` int(5) DEFAULT 0,
+  `kreirano` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `korisnik`
+--
+
+INSERT INTO `korisnik` (`id`, `role`, `ime`, `email`, `sifra`, `error_count`, `kreirano`) VALUES
+(1, 'admin', 'Admin', 'admin@admin.com', '1', 0, '2021-09-07 20:07:17'),
+(2, 'user', 'nikola', 'nikola@gmail.com', '1', 0, '2021-09-10 02:21:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proizvodi`
+--
+
+CREATE TABLE `proizvodi` (
+  `id` int(11) NOT NULL,
+  `slike` text NOT NULL,
+  `proizvodjac` int(100) NOT NULL,
+  `model` varchar(100) NOT NULL,
+  `tip` varchar(20) NOT NULL,
+  `pol` varchar(1) NOT NULL,
+  `cena` float NOT NULL,
+  `kolicina` int(255) NOT NULL,
+  `kreirano` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `proizvodi`
+--
+
+INSERT INTO `proizvodi` (`id`, `slike`, `proizvodjac`, `model`, `tip`, `pol`, `cena`, `kolicina`, `kreirano`) VALUES
+(13, 'Rolex1.jpg', 1, 'Rolex1', 'popularni', 'M', 10000, 2, '2021-09-08 23:36:16'),
+(14, 'Diesel2.jpeg', 2, 'Diesel2', 'novi', 'M', 180, 10, '2021-09-09 00:17:37'),
+(15, 'Fossil2.jpeg', 3, 'Fossil2', 'novi', 'M', 220, 10, '2021-09-10 00:42:54'),
+(17, 'Festina2.png', 4, 'Festina2', 'novi', 'Z', 120, 6, '2021-09-09 00:17:37'),
+(18, 'Festina1.png', 4, 'Festina1', 'novi', 'Z', 130, 8, '2021-09-09 00:26:19'),
+(19, 'Rolex2.jpg', 1, 'Rolex2', 'regularni', 'Z', 980, 4, '2021-09-06 02:09:58'),
+(24, 'Rolex3.jpg', 1, 'Rolex3', 'popularni', 'Z', 970, 6, '2021-09-10 00:44:17'),
+(25, 'Diesel1.jpeg', 2, 'Diesel1', 'regularni', 'M', 180, 19, '2021-09-10 00:44:55'),
+(26, 'Fossil1.jpeg', 3, 'Fossil1', 'regularni', 'Z', 110, 21, '2021-09-10 00:46:00'),
+(27, 'Festina3.png', 4, 'Festina3', 'regularni', 'Z', 140, 12, '2021-09-10 00:46:38'),
+(28, 'Diesel3.jpeg', 2, 'Diesel3', 'popularni', 'M', 150, 7, '2021-09-10 00:48:11'),
+(29, 'Festina1.png', 4, 'Festina1m', 'regularni', 'M', 420, 22, '2021-09-10 00:51:51'),
+(30, 'Rolex3.jpg', 1, 'Rolex3m', 'regularni', 'M', 850, 4, '2021-09-10 00:52:24'),
+(31, 'Festina2.png', 4, 'Festina2m', 'regularni', 'M', 390, 12, '2021-09-10 00:53:05'),
+(32, 'Rolex2.jpg', 1, 'Rolex2m', 'regularni', 'M', 1400, 1, '2021-09-10 00:54:17'),
+(33, 'Festina3.png', 4, 'Festina3m', 'regularni', 'M', 240, 24, '2021-09-10 00:55:07'),
+(34, 'Fossil1.jpeg', 3, 'Fossil1m', 'regularni', 'M', 220, 18, '2021-09-10 00:55:56'),
+(35, 'Diesel1.jpeg', 2, 'Diesel1z', 'popularni', 'Z', 210, 13, '2021-09-10 00:56:30'),
+(36, 'Diesel2.jpeg', 2, 'Diesel2z', 'regularni', 'Z', 190, 14, '2021-09-10 00:57:25'),
+(37, 'Fossil3.jpeg', 3, 'Fossil3z', 'regularni', 'Z', 200, 17, '2021-09-10 00:57:54'),
+(38, 'Rolex1.jpg', 1, 'Rolex1z', 'regularni', 'Z', 670, 5, '2021-09-10 00:58:26'),
+(39, 'Fossil3.jpeg', 3, 'Fossil3', 'regularni', 'M', 270, 11, '2021-09-10 00:59:00'),
+(40, 'Diesel3.jpeg', 2, 'Diesel3z', 'regularni', 'Z', 240, 12, '2021-09-10 00:59:28'),
+(41, 'Fossil2.jpeg', 3, 'Fossil2z', 'regularni', 'Z', 210, 10, '2021-09-10 00:59:52'),
+(42, 'Fossil4.jpeg', 3, 'Fossil4z', 'regularni', 'Z', 180, 12, '2021-09-10 01:02:58'),
+(43, 'Fossil4m.jpeg', 3, 'Fossil4m', 'regularni', 'M', 190, 7, '2021-09-10 01:04:04'),
+(44, 'Diesel4m.jpeg', 2, 'Diesel4m', 'regularni', 'M', 230, 11, '2021-09-10 01:04:50'),
+(45, 'Diesel4z.jpeg', 2, 'Diesel4z', 'regularni', 'Z', 350, 4, '2021-09-10 01:05:36'),
+(46, 'Festina4m.jpeg', 4, 'Festina4m', 'regularni', 'M', 240, 9, '2021-09-10 01:06:19'),
+(47, 'Festina4z.png', 4, 'Festina4z', 'regularni', 'Z', 120, 19, '2021-09-10 01:07:41'),
+(48, 'Rolex4z.webp', 1, 'Rolex4z', 'regularni', 'Z', 780, 3, '2021-09-10 01:09:51'),
+(49, 'Rolex4m.webp', 1, 'Rolex4m', 'regularni', 'M', 960, 1, '2021-09-10 01:10:14');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `proizvodjaci`
+--
+
+CREATE TABLE `proizvodjaci` (
+  `id` int(11) NOT NULL,
+  `naziv` varchar(50) NOT NULL,
+  `kreirano` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `proizvodjaci`
+--
+
+INSERT INTO `proizvodjaci` (`id`, `naziv`, `kreirano`) VALUES
+(1, 'Rolex', '2021-09-01 13:53:03'),
+(2, 'Diesel', '2021-09-01 13:53:03'),
+(3, 'Fossil', '2021-09-01 13:53:44'),
+(4, 'Festina', '2021-09-01 13:53:44');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `korisnik`
+--
+ALTER TABLE `korisnik`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `proizvodi`
+--
+ALTER TABLE `proizvodi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `proizvodjaci`
+--
+ALTER TABLE `proizvodjaci`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `korisnik`
+--
+ALTER TABLE `korisnik`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `proizvodi`
+--
+ALTER TABLE `proizvodi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `proizvodjaci`
+--
+ALTER TABLE `proizvodjaci`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
